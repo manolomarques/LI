@@ -1,0 +1,56 @@
+##Plano de teste em tópicos
+
+Preço do produto - UNIDADE
+Remoção
+Adição
+Cupom
+
+Quantidade de itens
+Remoção
+Adição
+Vazio
+Cupom
+
+Valor subtotal - SOMATORIA
+Remoção
+Adição
+Cupom
+
+Valor frete
+Alterar unidades
+Adicionar produtos de vendedores diferentes
+Adicionar produtos diferentes
+Cupom
+
+Valor total
+Remoção
+Adição
+Cupom
+
+Cupom x outro desconto
+5 - Cupom produto x Desconto.
+6 - Cupom vencimento x Desconto.
+
+Cupom x Produto
+3 - Cupom produto.
+4 - Cupom produto.
+5 - Cupom produto x Desconto.
+
+Cupom x Frete
+1 - Cupom frete grátis, valor mínima 250 reais.
+2 - Cupom frete grátis, valor mínima 250 reais.
+
+Cupom X vencimento
+6 - Cupom vencimento x Desconto.
+
+Cupom x valor mínimo
+1 - Cupom frete grátis, valor mínima 250 reais.
+2 - Cupom frete grátis, valor mínima 250 reais.
+
+Cupom por valor da compra (produto)
+7 - Cupom frete grátis, valor do produto 150 reais.
+
+Cupom por valor do carrinho
+1 - Cupom frete grátis, valor mínima 250 reais.
+2 - Cupom frete grátis, valor mínima 250 reais.
+

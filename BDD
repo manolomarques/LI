@@ -1,0 +1,178 @@
+##BDD
+
+Contexto padrão do carrinho.
+
+1 Itens remover todas unidades
+
+Dado que removo todas unidades do produto
+Quando carrinho fica vazio
+Então devo ver: Carrinho vazio
+E Botão: Ir ás compras
+
+2 Itens unidades
+
+Dado que adiciono '10 mil' unidades de cada produto
+Quando clico em finalizar
+Então compra deve ser salva corretamente.
+
+3 Itens remover com "lixeira"
+
+Dado que desejo remover um item
+Quando clico em "lixeira" (remover)
+Então produto é removido
+
+4 Itens remover com "menos"
+
+Dado que tenho uma unidade do item
+Quando clico em "-"
+Então produto é removido
+
+5 Itens inserir com "mais"
+
+Dado que tenho uma unidade do item
+Quando clico uma vez em "+"
+Então tenho '2' unidades
+
+6  Itens remover com teclado
+
+Dado que tenho três unidades do item
+Quando clico no valor '3'
+E adiciono o número '0' via teclado
+E confirmo com o enter
+Então produto é removido
+
+7  Itens Inserir com teclado
+
+Dado que tenho uma unidade do item
+Quando clico no valor '1'
+E adiciono o número '3' via teclado
+E confirmo com o enter
+Então tenho '3' unidades
+
+8 Subtotal remover com "menos"
+
+Dado que tenho o produto a R$ 80,00
+E tenho 5 unidades
+E Subtotal de R$ 400,00
+Quando clico uma vez em "-"
+Então produto é removido
+E Subtotal de 4 unidades é de R$ 320,00
+
+9 Subtotal inserir com "mais"
+
+Dado que tenho o produto a R$ 80,00
+E tenho 5 unidades
+E Subtotal de R$ 400,00
+Quando clico uma vez em "+"
+Então produto é removido
+E Subtotal de 6 unidades é de R$ 480,00
+
+10  Frete inserir com teclado
+
+Dado que tenho três unidades do item
+Quando clico no valor '3'
+E adiciono o número '20' via teclado
+E confirmo com o enter
+Então valor do frete é recalculado
+
+11  Valor Total remover com teclado
+
+Dado que tenho vinte unidades do item
+Quando clico no valor '20'
+E adiciono o número '4' via teclado
+E confirmo com o enter
+Então valor do frete é recalculado
+E Total do valor é recalculado
+
+
+Contexto da nova feature
+1 Cupom frete grátis, valor mínima 250 reais.
+Dado que Preço do produto é superior a 50 reais
+E quantidade superior a 5
+Quando informo cupom frete grátis
+E só se aplica para compras com valor superior a 250 reais
+Então cupom de frete grátis é aplicado corretamente
+
+2 Cupom frete grátis, valor mínima 250 reais.
+Dado que Preço do produto é superior a 50 reais
+E quantidade inferior a 4
+Quando informo cupom frete grátis
+E só se aplica para compras com valor superior a 250 reais
+Então cupom de frete grátis não é aplicado
+E apresenta mensagem informativa: Cupom aplicável a partir de R$:250,00
+
+3 Cupom produto.
+Dado que o carrinho possua 2 unidades de produtos diferentes (1 'toalha', 1 'mochila')
+Quando aplico cupom na compra
+E que dá 50% para até 1 unidade
+E valido para o produto 'toalha'
+Então recebo 50 % de desconto na unidade do produto 'toalha'
+E o produto 'mochila' não recebe alterações em seu valor
+
+4 Cupom produto.
+Dado que o carrinho possua 3 unidades de produtos diferentes (2 'toalha', 1 'mochila')
+Quando aplico cupom na compra
+E que dá 50% para até 1 unidade
+E valido para o produto 'toalha'
+Então recebo 50 % de desconto em 1 unidade do produto 'toalha'
+E 2° unidade do produto "toalha" não recebe alteração em seu valor
+E o produto 'mochila' não recebe alterações em seu valor
+
+5 Cupom produto x Desconto.
+Dado que o carrinho possua 4 unidades de produtos diferentes (2 'toalha', 1 'mochila', 2 'livro')
+E Produtos 'livro' e 'toalha' estão na promoção com 20% de desconto
+Quando aplico cupom na compra
+E cupom dá 50% para até 1 unidade do produto 'toalha'
+Então Produtos 'livro' e 'toalha' recebem 20% de desconto derivado da promoção
+E somente uma unidade do Produto 'toalha' recebe 50 % de desconto derivado do cupom
+E produtos com desconto por promoção e vouchers, tem seus descontos somados
+E o produto 'mochila' não recebe alterações em seu valor
+
+6 Cupom vencimento x Desconto.
+Dado que o carrinho possua 1 unidade de produto ('toalha')
+E Produto 'toalha' está na promoção com 20% de desconto
+Quando aplico cupom na compra
+E cupom dá 50% para até 1 unidade do produto 'toalha'
+E cupom está fora do prazo de validade
+Então Produto 'toalha' recebem 20% de desconto derivado da promoção
+E apresenta mensagem informativa: Cupom vencido em dd/mm/aaaa
+
+7 Cupom frete grátis, valor do produto 150 reais.
+Dado que o carrinho possua 1 unidades com custo de 150 reais.
+Quando aplico cupom na compra
+E só se aplica para produtos com valor superior a 150 reais
+Então cupom é aplicado corretamente
+
+8 Cupom vencimento x Desconto.
+Dado que o carrinho possua 1 unidade de produto ('toalha')
+E Produto 'toalha' está na promoção com 20% de desconto
+Quando aplico cupom na compra
+E cupom dá 50% para até 1 unidade do produto 'toalha'
+E cupom está fora do prazo de validade
+Então Produto 'toalha' recebem 20% de desconto derivado da promoção
+E apresenta mensagem informativa: Cupom vencido em dd/mm/aaaa
+
+
+9 Valor Total adicionar cupom de desconto
+
+Dado que meu carrinho está com valor total de R$ 1.342,94
+Quando adiciono o cupom '30REAIS'
+E ganho 30 reais de desconto no valor total da compra
+Então valor total do carrinho fica R$ 1.312,94
+
+
+10 Valor unitário adicionar cupom de desconto
+
+Dado que o produto tem o valor de R$ 80,00
+Quando adiciono o cupom '30REAIS'
+E ganho 30 reais de desconto no valor total da compra
+Então valor total do carrinho é recalculado
+E valor unitário do produto não é alterado
+
+11 Valor unitário adicionar cupom de desconto
+
+Dado que o produto tem o valor de R$ 80,00
+Quando adiciono o cupom '30REAIS'
+E ganho 30 reais de desconto no valor total da compra
+Então valor total do carrinho é recalculado
+E valor unitário do produto não é alterado
